@@ -6,3 +6,199 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
+
+*{/* Universal Selector*/
+    
+    /* - Avoids the Browser to automatically add any extra paddings or margins.
+     - By Starting Clean
+    */
+    margin: 0;
+    padding: 0;
+    /*  Borders or paddings are no longer added to the total width or height
+        that we specifty to a box. */
+    box-sizing: border-box;
+}
+
+body{
+    /*  Properties related to font are usually inherited */
+    /*  Anything related to font, should be specified in the body
+        so all childs can inherit from it */
+    font-family: "Lato", sans-serif; /* uses sans-serif if Lato is not available*/
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;/*1.7 times the original vertical space between lines*/
+    color: #777;
+    padding: 30px; /* Padding is not inherited, only font configurations*/
+}
+
+.header{
+    height: 95vh;/*95% Of the viewport height*/
+    background-image: linear-gradient(
+        to right bottom,
+        rgba(126, 213, 111, 0.8),
+        rgba(40, 180, 131, 0.8)),
+        url(../img/hero.jpg);
+    background-size: cover;
+    background-position: top;/*Avoids 'Top' image cropping when resizing*/
+    position: relative;/* sets the reference point for '.logo-box' positioning*/
+    clip-path: polygon(0% 0%, 100% 0, 100% 75vh, 0% 100%);
+}
+
+.logo-box {
+    position: absolute;
+    /* if missing, the following properties won't work*/
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    height: 35px;
+    /* width: automatically set by browser*/
+}
+
+.text-box{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);/* Sets a new point of reference for this '.text-box', the default point of reference this block is the upper left corner.*/
+    text-align: center;
+}
+
+.heading-primary{
+    color: #ffffff;
+    text-transform: uppercase;
+    backface-visibility: hidden;/* avoids the unwanted shake at the end of the animaion*/
+    margin-bottom: 60px;
+}
+
+.heading-primary-main{
+    display: block; /*to behave as a block element, occupying 100% of the width*/
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; /* slow down at the end*/
+
+
+    /* animation-iteration-count: 3; */
+     /* animation-delay: 3s; */ /* wait 3s before animation occurs*/
+}
+.heading-primary-sub{
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+
+    animation: moveInRight 1s ease-out;
+}
+
+@keyframes moveInLeft {
+    
+    0% { /* Start*/
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    80% { /* Something that you want to happen at this point of the animation*/
+        transform: translateX(10px);
+
+    }
+    
+    100% { /*Finnish*/
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveInRight {
+    
+    0% { /* Start*/
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    80% { /* Something that you want to happen at this point of the animation*/
+        transform: translateX(-10px);
+    }
+    
+    100% { /*Finnish*/
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveInBottom {
+    
+    0% { /* Start*/
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    80% { /* Something that you want to happen at this point of the animation*/
+        transform: translateY(-10px);
+    }
+    
+    100% { /*Finnish*/
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all .2s;
+
+    /*This stablishes the reference point for the copy of this element '::after'*/
+    position: relative;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(-1px); /* Rerefence position '.btn:link' */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+
+}
+
+.btn-white{
+    background-color: #fff;
+    color: #777;
+}
+
+.btn::after{/*sudo element*/
+    content: "";/* must be specified always, otherwise this sudo element won't display. */
+    display: inline-block;
+    /* This behaves as a child of the parent element*/
+    height: 100%; /* of the original button height*/
+    width: 100%; /* of the original button width*/
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after{
+    background-color: #fff;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);;
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom 1s ease-out .75s;/* '.75s' delay time*/
+    animation-fill-mode: backwards; 
+}
