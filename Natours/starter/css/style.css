@@ -19,16 +19,20 @@ Dark green: #28b485
     box-sizing: border-box;
 }
 
+html {
+    font-size: 10px;/* changing rem to a 10px base instead of 16px*/
+}
+
 body{
     /*  Properties related to font are usually inherited */
     /*  Anything related to font, should be specified in the body
         so all childs can inherit from it */
     font-family: "Lato", sans-serif; /* uses sans-serif if Lato is not available*/
     font-weight: 400;
-    font-size: 16px;
+    /*font-size: 16px;*/ /* se the 'html' selector*/
     line-height: 1.7;/*1.7 times the original vertical space between lines*/
     color: #777;
-    padding: 30px; /* Padding is not inherited, only font configurations*/
+    padding: 3rem; /* Padding is not inherited, only font configurations*/
 }
 
 .header{
@@ -47,12 +51,12 @@ body{
 .logo-box {
     position: absolute;
     /* if missing, the following properties won't work*/
-    top: 40px;
-    left: 40px;
+    top: 4rem;
+    left: 4rem;
 }
 
 .logo {
-    height: 35px;
+    height: 3.5rem;
     /* width: automatically set by browser*/
 }
 
@@ -68,14 +72,14 @@ body{
     color: #ffffff;
     text-transform: uppercase;
     backface-visibility: hidden;/* avoids the unwanted shake at the end of the animaion*/
-    margin-bottom: 60px;
+    margin-bottom: 6rem;
 }
 
 .heading-primary-main{
     display: block; /*to behave as a block element, occupying 100% of the width*/
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
 
     animation-name: moveInLeft;
     animation-duration: 1s;
@@ -87,9 +91,9 @@ body{
 }
 .heading-primary-sub{
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 17.4px;
+    letter-spacing: 1.75rem;
 
     animation: moveInRight 1s ease-out;
 }
@@ -98,11 +102,11 @@ body{
     
     0% { /* Start*/
         opacity: 0;
-        transform: translateX(-100px);
+        transform: translateX(-10rem);
     }
 
     80% { /* Something that you want to happen at this point of the animation*/
-        transform: translateX(10px);
+        transform: translateX(1rem);
 
     }
     
@@ -116,11 +120,11 @@ body{
     
     0% { /* Start*/
         opacity: 0;
-        transform: translateX(100px);
+        transform: translateX(10rem);
     }
 
     80% { /* Something that you want to happen at this point of the animation*/
-        transform: translateX(-10px);
+        transform: translateX(-1rem);
     }
     
     100% { /*Finnish*/
@@ -133,11 +137,11 @@ body{
     
     0% { /* Start*/
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(3rem);
     }
 
     80% { /* Something that you want to happen at this point of the animation*/
-        transform: translateY(-10px);
+        transform: translateY(-1rem);
     }
     
     100% { /*Finnish*/
@@ -150,23 +154,27 @@ body{
 .btn:visited {
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px;
+    padding: 1.5rem 4rem;
     display: inline-block;
-    border-radius: 100px;
+    border-radius: 10rem;
     transition: all .2s;
 
     /*This stablishes the reference point for the copy of this element '::after'*/
     position: relative;
+
+    /*Root Font size is 10px now, so we add a specific font-size for the button*/
+    font-size: 1.6rem;
+
 }
 
 .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3rem);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
 
 .btn:active {
-    transform: translateY(-1px); /* Rerefence position '.btn:link' */
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1rem); /* Rerefence position '.btn:link' */
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.2);
 
 }
 
@@ -181,7 +189,7 @@ body{
     /* This behaves as a child of the parent element*/
     height: 100%; /* of the original button height*/
     width: 100%; /* of the original button width*/
-    border-radius: 100px;
+    border-radius: 10rem;
     position: absolute;
     top: 0;
     left: 0;
